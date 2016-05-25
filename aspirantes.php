@@ -10,7 +10,7 @@ require('functions/funciones.php')
 <body>
 
 	<form class="form-horizontal">
-		<fieldset>SDSAD
+		<fieldset>
 			<!-- Form Name -->
 			<legend>Datos Personales</legend>
 			<!-- Text input-->
