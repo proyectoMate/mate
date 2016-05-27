@@ -9,7 +9,7 @@ require('functions/funciones.php')
 </head>
 <body>
 
-	<form class="form-horizontal">
+	<form action="abm.php" method="POST" class="form-horizontal">
 		<fieldset>
 			<!-- Form Name -->
 			<legend>Datos Personales</legend>
@@ -217,7 +217,7 @@ require('functions/funciones.php')
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""></label>
 			<div class="col-md-4">
-				<button id="" name="" class="btn btn-primary">Registrarme</button>
+				<button id="" name="registrar" value="OK" class="btn btn-primary">Registrarme</button>
 			</div>
 		</div>
 	</form>
