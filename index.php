@@ -1,24 +1,74 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <META NAME="Author" content="Luis Vega">
-        <META charset="utf-8">
-        <title>Menu Principal</title>
-        <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-        <link rel="stylesheet" type="text/css" href="./css/jquery.dataTables.css">
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.js"></script>
-        <script src="./js/jquery-1.12.0.min.js"></script>
-        <script src="./js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" href="css/normalize.css">
-    <title>Formulario de Logueo</title> 
-
-    
-        <style>
-/* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+<?php
+    session_start();
+    require_once './functions/funciones.php';
+    head('Logueo');
+    if (isset($_POST["ok"])) 
+	{
+		$resultado = usuarioLogin($_POST["u"], $_POST["p"]);
+		if ($resultado != false) 
+		{
+			$_SESSION["usuario"] = $resultado["dni"];
+			$_SESSION["rol"] = $resultado["id_rol"];
+			$_SESSION["id"] = $resultado["id"];
+			$_SESSION["estado"] = $resultado["estado"];
+			if ($resultado["estado"]==0) 
+			{
+				msgbox('Aun no esta activo, hable con el administrador');
+                                f_ir_a('index.php');
+			}
+			else
+			{
+				if ($resultado["estado"]==1) 
+				{
+					f_ir_a('aspirantes.php');
+				}
+			}
+		}
+		else
+		{
+			//Vuelvo a enviar a la pagina por get el login falso
+			msgbox('Sus datos aun no han sido registrados, favor de registrarse con sistemas');
+			f_ir_a('index.php');
+		}
+	}
+	else
+	{
+?>
+    <div class="login">
+	<h1>Ingresa</h1>
+        <form method="post" action="" autocomplete="off">
+            <input type="text" name="u" placeholder="Tu dni" required="required" />
+            <input type="password" name="p" placeholder="Contraseña" required="required" />
+            <button type="submit" name="ok" class="btn btn-primary btn-block btn-large"> Entrar </button>
+        </form>
+        <br>
+        <a href="" data-toggle="modal" data-target="#myModal">Aun no estas registrado?  Hace clic ACA! </a>
+    </div>
+    <!-- aqui comienza el ingreso de la nota -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Registrate </h4>
+            </div>
+            <div class="modal-body"><!-- abrimos modal-body -->
+                <?php require_once './layouts/registro_form.php';?>
+            </div> <!-- cerramos modal-body -->
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal"> volver </button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </body>
+    </html>
+        <?php } //fin del else?>    
+<style>
+/* NOTA: Se añadieron los estilos en línea porque necesita tener acceso a sus estilos y deben ser inline si están en el disco local! */
 .btn { display: inline-block; *display: inline; *zoom: 1; padding: 4px 10px 4px; margin-bottom: 0; font-size: 13px; line-height: 18px; color: #333333; text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle; background-color: #f5f5f5; background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6); background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)); background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6); background-image: -o-linear-gradient(top, #ffffff, #e6e6e6); background-image: linear-gradient(top, #ffffff, #e6e6e6); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6, GradientType=0); border-color: #e6e6e6 #e6e6e6 #e6e6e6; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border: 1px solid #e6e6e6; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); cursor: pointer; *margin-left: .3em; }
 .btn:hover, .btn:active, .btn.active, .btn.disabled, .btn[disabled] { background-color: #e6e6e6; }
 .btn-large { padding: 9px 14px; font-size: 15px; line-height: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
@@ -75,63 +125,4 @@ input {
 	transition: box-shadow .5s ease;
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
-
-    </style>
-
-    
-        <script src="js/prefixfree.min.js"></script>
-
-    
-  </head>
-
-  <body>
-
-    <div class="login">
-	<h1>Ingresa</h1>
-        <form method="post" action="" autocomplete="off">
-            <input type="text" name="u" placeholder="Tu usuario" required="required" />
-            <input type="password" name="p" placeholder="Contraseña" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large"> Entrar </button>
-        </form>
-        <br>
-        <a href="" data-toggle="modal" data-target="#myModal">Aun no estas registrado </a>
-    </div>
-    
-
-    <!-- aqui comienza el ingreso de la nota -->
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-    <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Ingresar nota </h4>
-            </div>
-            <div class="modal-body"><!-- abrimos modal-body -->
-            <form class="form-horizontal" name="form_ingreso"  action="" method="POST" role="form" autocomplete="off" >
-                
-                <input type="hidden" name="id_usuario" value=" <?php echo $_SESSION['id_usuario']; ?> ">
-                <div class="form-group" >
-                    <div class="row">
-                    <label for="detalle" class="col-sm-2 control-label">Nota :</label>
-                    <div class="col-sm-8">
-                        <input type="hidden" name="id_usuario" value=" <?php echo $_SESSION['id_usuario']; ?> ">
-                    </div>
-                    </div>
-                </div>
-                <input type="hidden" name="id_estado_reclamos" value=" <?php echo $estado['id']; ?> ">
-                <!-- aqui e cuerpo -->
-                
-            </form>
-            </div> <!-- cerramos modal-body -->
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal"> volver </button>
-            </div>
-        </div>
-      </div>
-    </div>
-    
-    
-  </body>
-</html>
+</style>
