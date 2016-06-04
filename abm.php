@@ -21,7 +21,7 @@
 		$codigoPostal = $_POST['codigoPostal'];
 		$tel = $_POST['tel'];
 		$telAlternativo = $_POST['telAlternativo'];
-		$pertenecaA = $_POST['pertenecaA'];
+		$pertenecaA = $_POST['perteneceA'];
 		$email = $_POST['email'];
 		$titulo = $_POST['titulo'];
 		$anioEgreso = $_POST['anioEgreso'];
