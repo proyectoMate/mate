@@ -1,7 +1,7 @@
 <?php
     date_default_timezone_set('America/Argentina/Buenos_Aires');
     error_reporting(E_ERROR);
-    include ('/config/db_conexion.php');
+    require ('./config/db_conexion.php');
 
 function head($titulo='Sin titulo')
 {?>           
@@ -137,29 +137,4 @@ function usuarioLogin($usuario, $contrasenia)
       }
       desconectarBD();
 } // fin usuarios
-
-
-/* conexion con base de datos */
-function definirdatosBD($pass,$name, $host='localhost',$user='root')
-{
-        define('HOST_DB', $host);
-        define('USER_DB', $user);
-        define('PASS_DB', $pass);
-        define('NAME_DB', $name);
-}
-
-function conectarBD()
-{
-        definirdatosBD('33667241a', 'proyectoMate');
-        Global $conexion; 
-        $conexion=mysql_connect(HOST_DB,USER_DB,PASS_DB)
-        OR die('NO SE PUEDE ABRIR BD');
-        mysql_select_db(NAME_DB) or die('NO SE ENCONTRO BD');
-}
-
-function desconectarBD()
-{
-        mysql_close($conexion);
-}
-
 ?>

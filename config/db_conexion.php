@@ -1,26 +1,24 @@
 <?php
-define('HOST_DB', 'localhost'); //Nombre del host, nomalmente localhost 
-define('USER_DB', 'root'); //Usuario de la base de datos 
-define('PASS_DB', 'root'); //Contraseña de la base de datos 
-define('NAME_DB', 'mate'); //Nombre de la base de datos
-//$conexion="";
+/* conexion con base de datos */
+function definirdatosBD($pass,$name, $host='localhost',$user='root')
+{
+        define('HOST_DB', $host);
+        define('USER_DB', $user);
+        define('PASS_DB', $pass);
+        define('NAME_DB', $name);
+}
 
-function conectar()
-{ 
-	global $conexion; //Definición global para poder utilizar en todo el contexto 
-	$conexion = mysql_connect(HOST_DB, USER_DB, PASS_DB) 
-		or die ('NO SE HA PODIDO CONECTAR AL MOTOR DE LA BASE DE DATOS'); 
-	mysql_select_db(NAME_DB) 
-		or die ('NO SE ENCUENTRA LA BASE DE DATOS ' . NAME_DB);
+function conectarBD()
+{
+        definirdatosBD('33667241a', 'proyectoMate');
+        Global $conexion; 
+        $conexion=mysql_connect(HOST_DB,USER_DB,PASS_DB)
+        OR die('NO SE PUEDE ABRIR BD');
+        mysql_select_db(NAME_DB) or die('NO SE ENCONTRO BD');
+}
 
-/*  	if ($conexion == TRUE){
-	echo "Se ha conectado a la base de datos con éxito. \n";
-}*/
-} 
-
-function desconectar()
-{ 
-	global $conexion; 
-	mysql_close($conexion); 
+function desconectarBD()
+{
+        mysql_close($conexion);
 }
 ?>
