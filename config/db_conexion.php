@@ -23,6 +23,4 @@ function desconectar()
 	global $conexion; 
 	mysql_close($conexion); 
 }
-
-
 ?>
