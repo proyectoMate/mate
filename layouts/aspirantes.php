@@ -1,14 +1,8 @@
 <?php
-require('functions/funciones.php')
-?>
-<html>
-<head>
-	<?php
-	head("Aspirantes");
+    session_start();
+    require_once './functions/funciones.php';
+    head('Logueo');
 	?>
-</head>
-<body>
-
 	<form action="abm.php" method="POST" class="form-horizontal">
 		<fieldset>
 			<!-- Form Name -->

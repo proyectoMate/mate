@@ -1,7 +1,6 @@
 <?php
     date_default_timezone_set('America/Argentina/Buenos_Aires');
     error_reporting(E_ERROR);
-    require ('./config/db_conexion.php');
 
 function head($titulo='Sin titulo')
 {?>           
@@ -27,7 +26,7 @@ function head($titulo='Sin titulo')
 
             <!-- Page-Level Plugin CSS - Tables -->
             <link type="text/css" href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-            <link type="text/css" href="css/plugins/index/normalize.css" rel="stylesheet" >
+            
 
             <!-- Scrips -->
             <script src="./js/jquery.min.js"></script>
@@ -121,6 +120,7 @@ function f_ir_a($pagina)
 
 function usuarioLogin($usuario, $contrasenia)
 {
+        require ('./config/db_conexion.php');
 	conectarBD();
 	$contrasenia = sha1($contrasenia);
 
@@ -137,4 +137,27 @@ function usuarioLogin($usuario, $contrasenia)
       }
       desconectarBD();
 } // fin usuarios
+ function modal($id,$tituloModal,$cuerpoModal,$tam='md')
+ {
+?>
+    <!-- Comienzo del Modal-->
+    <div class="modal fade" id="<?php echo $id;?>" role="dialog">
+      <div class="modal-dialog modal-<?php echo $tam;?>">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $tituloModal;?> </h4>
+            </div>
+            <div class="modal-body"><!-- abrimos modal-body -->
+                <?php require_once('./layouts/'.$cuerpoModal);  ?>
+            </div> <!-- cerramos modal-body -->
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal"> volver </button>
+            </div>
+        </div>
+      </div>
+    </div>
+<?php
+ }
 ?>
