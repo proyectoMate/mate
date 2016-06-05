@@ -1,5 +1,7 @@
 <?php
+    header("Content-Type: text/html; charset=ISO-8859-1");
     require("functions/generales.php");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +27,9 @@ head();
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
-                    
+<?php
+
+?>                    
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-8 -->

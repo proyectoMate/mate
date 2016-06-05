@@ -1,4 +1,7 @@
 <?php
+
+require("../config/db_conexion.php");
+
 function head($titulo="Sin titulo")
 {
 
@@ -257,17 +260,39 @@ function top_menu(){
 <?php
 };
 
-function left_menu(){
+function left_menu($perfil=1){
 ?>
 <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li>
+                        <?php
+                        $sql = "SELECT m.linkMenu AS linkMenu, 
+                                       m.nombreMenu AS nombreMenu, 
+                                       sm.nombreSubMenu AS nombreSubMenu 
+                                FROM menus AS m
+                                LEFT JOIN subMenus AS sm ON m.id = sm.idMenu"; 
+                        //echo $sql;
+                        conectarBD();
+                        $respuesta = mysql_query($sql);
+                        desconectarBD();
+
+
+                        while ($reg=mysql_fetch_array($respuesta)){
+                            //echo $reg['id']." ".$reg['nombreMenu'];
+                            //print_r($reg);
+                            echo "<li> 
+                                    <a href=\"".$reg['linkMenu']."\"><i class='fa fa-home fa-fw'></i>".$reg['nombreMenu']."</a>
+                                  </li>";
+
+                        }
+
+                        ?>
+<!--                         <li>
                             <a href="#"><i class="fa fa-home fa-fw"></i>Panel de Control</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-book fa-fw"></i>Alumnos</a>
-                         </li>                        
+                         </li>     -->                    
                     </ul>
                     <!-- /#side-menu -->
                 </div>
