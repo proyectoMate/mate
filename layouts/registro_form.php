@@ -60,7 +60,7 @@ if (isset($_POST['button']))
       <input id="celular" name="tel" type="number" placeholder="1166448866" class="form-control input-md">
   </div>
 </div>
-<input type="hidden" name='estado' value="0">
+<input type="hidden" name="estado" value="0">
 
 <!-- Button -->
 <div class="form-group">
@@ -71,7 +71,6 @@ if (isset($_POST['button']))
 </div>
 </form>
 
-<?php
-    
+<?php  
 }
 ?>

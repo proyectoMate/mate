@@ -38,10 +38,10 @@ function head($titulo='Sin titulo')
         <body>
             <div class="container-fluid">
 <?php
-} //fin 	function head($titulo='Sin titulo')
+} //fin   function head($titulo='Sin titulo')
 function f_footer()
 {?>
-                <br>		
+                <br>    
                 <div class="footer" style="background-color:#e6e6e6;">
                     <center>
                         <div class="about">
@@ -53,12 +53,49 @@ function f_footer()
         </body>
     </html>
 <?php
-}
+} // termina la funcion f_footer
+function modal($id,$tituloModal,$cuerpoModal,$tam='md')
+ {
 ?>
-
+    <!-- Comienzo del Modal-->
+    <div class="modal fade" id="<?php echo $id;?>" role="dialog">
+      <div class="modal-dialog modal-<?php echo $tam;?>">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><?php echo $tituloModal;?> </h4>
+            </div>
+            <div class="modal-body"><!-- abrimos modal-body -->
+                <?php require_once('./layouts/'.$cuerpoModal);  ?>
+            </div> <!-- cerramos modal-body -->
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal"> volver </button>
+            </div>
+        </div>
+      </div>
+    </div>
 <?php
+ } // fin de la funcion modal
+
+function msgbox($texto)
+{
+    echo "
+    <script type='text/javascript'>
+    alert('".$texto."');
+    </script>
+    ";		
+}
+function f_ir_a($pagina)
+{
+			echo'<script>window.location="'.$pagina.'";</script>';
+}
+
+
+# ================== funciones con conexion a la base de datos ===================
 function sql_crear_insert($post)
 {
+
   array_pop($post); // elimino el ultimo valor del array post , busco eliminar el valor del boton
   $password='password'; //como se llama el name input password
   $values = ""; 
@@ -89,6 +126,7 @@ function sql_crear_insert($post)
 
 function sql_insert($tabla, $arrayPost)
 {
+  require ('./config/db_conexion.php');
   $sql="INSERT INTO ".$tabla.sql_crear_insert($arrayPost);
   #  etapa de conectar con la BD
   conectarBD();
@@ -105,22 +143,10 @@ function sql_insert($tabla, $arrayPost)
   desconectarBD();
 }
 
-function msgbox($texto)
-{
-    echo "
-    <script type='text/javascript'>
-    alert('".$texto."');
-    </script>
-    ";		
-}
-function f_ir_a($pagina)
-{
-			echo'<script>window.location="'.$pagina.'";</script>';
-}
 
 function usuarioLogin($usuario, $contrasenia)
 {
-        require ('./config/db_conexion.php');
+  require ('./config/db_conexion.php');
 	conectarBD();
 	$contrasenia = sha1($contrasenia);
 
@@ -137,27 +163,5 @@ function usuarioLogin($usuario, $contrasenia)
       }
       desconectarBD();
 } // fin usuarios
- function modal($id,$tituloModal,$cuerpoModal,$tam='md')
- {
-?>
-    <!-- Comienzo del Modal-->
-    <div class="modal fade" id="<?php echo $id;?>" role="dialog">
-      <div class="modal-dialog modal-<?php echo $tam;?>">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><?php echo $tituloModal;?> </h4>
-            </div>
-            <div class="modal-body"><!-- abrimos modal-body -->
-                <?php require_once('./layouts/'.$cuerpoModal);  ?>
-            </div> <!-- cerramos modal-body -->
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal"> volver </button>
-            </div>
-        </div>
-      </div>
-    </div>
-<?php
- }
+ 
 ?>
