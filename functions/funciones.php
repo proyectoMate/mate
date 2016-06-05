@@ -163,5 +163,9 @@ function usuarioLogin($usuario, $contrasenia)
       }
       desconectarBD();
 } // fin usuarios
- 
+
+function volver($url)
+{
+    echo '<a href="./'.$url.'"><button type="button" class="btn btn-default btn-md">Volver</button></a>';   
+}
 ?>

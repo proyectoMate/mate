@@ -21,7 +21,7 @@
 			{
 				if ($resultado["estado"]==1) 
 				{
-					f_ir_a('./layouts/aspirantes.php');
+					f_ir_a('./inscripcion.php');
 				}
 			}
 		}
