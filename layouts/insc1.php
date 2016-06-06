@@ -1,12 +1,9 @@
 <?php
 if ($_POST['boton']=='etapa2') 
 {
-    if(sql_update_post($_POST, 'usuarios', 'dni', $_SESSION['usuario']))
-    {
-        f_ir_a('inscripcion.php?etapa=2');
-    }
-    else{        msgbox('Verifique los datos ingresados');}
-    
+    print_r($_POST);
+    sql_update_post($_POST, 'usuarios', 'dni', $_POST['dni']);
+    f_ir_a('inscripcion.php?etapa=2');
 }
 $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
 ?>
@@ -143,7 +140,7 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
     <div class="col-sm-5"><!-- Col N°2 -->
         <div class="form-group">
             <label class="control-label" for="partidp">Barrio / Partido</label>  
-            <input id="partidp" name="partido" type="text" placeholder="Barrio / Partido" class="form-control input-sm" required="">  
+            <input id="partido" name="partido" type="text" placeholder="Barrio / Partido" class="form-control input-sm" required="">  
         </div>
     </div>
 </div><!-- Fin N°4 -->
@@ -172,8 +169,8 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
 <div class="row"><!-- Fila N°6 -->
     <div class="col-sm-5"><!-- Col N°1 -->
         <div class="form-group">
-            <label class="control-label" for="pertenecaA">Pertenece a </label>  
-            <input id="pertenecaA" name="pertenecaA" type="text" placeholder="Pertenece a " class="form-control input-sm" required="">  
+            <label class="control-label" for="perteneceA">Pertenece a </label>  
+            <input id="perteneceA" name="perteneceA" type="text" placeholder="Pertenece a " class="form-control input-sm" required="">  
         </div>
     </div>
     <div class="col-sm-5"><!-- Col N°2 -->

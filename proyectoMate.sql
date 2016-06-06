@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-06-2016 a las 02:00:52
+-- Tiempo de generación: 05-06-2016 a las 22:02:23
 -- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.17
 
@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `estados` (
 --
 
 INSERT INTO `estados` (`id`, `detalle`) VALUES
-(1, 'Desactivado'),
-(2, 'Activado'),
-(3, 'Bloqueado');
+(0, 'Desactivado'),
+(1, 'Activado'),
+(2, 'Bloqueado');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `localidadPartidoCp` (
   `partido` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cp` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1881 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1882 ;
 
 --
 -- Volcado de datos para la tabla `localidadPartidoCp`
@@ -2006,7 +2006,8 @@ INSERT INTO `localidadPartidoCp` (`id`, `localidad`, `cod_localidad`, `partido`,
 (1877, 'BERISSO', 98, 'LOS TALAS', 1923),
 (1878, 'BERISSO', 98, 'EL PESCADO', 1907),
 (1879, 'BERISSO', 98, 'BERISSO', 1923),
-(1880, 'BERISSO', 98, 'BARRIO UNIVERSITARIO', 1923);
+(1880, 'BERISSO', 98, 'BARRIO UNIVERSITARIO', 1923),
+(1881, 'C.A.B.A.', 0, 'C.A.B.A.', 0);
 
 -- --------------------------------------------------------
 
@@ -2018,7 +2019,23 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `detalle`) VALUES
+(0, 'sin validar'),
+(1, 'registrado'),
+(2, 'preinscripto'),
+(3, 'inscripto'),
+(4, 'alumno'),
+(5, 'profesor'),
+(6, 'preceptor'),
+(7, 'director'),
+(8, 'erik'),
+(9, 'juanCarlosRoot');
 
 -- --------------------------------------------------------
 
@@ -2056,7 +2073,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `pisoDomicilio` int(5) DEFAULT NULL,
   `dptoDomicilio` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `localidad` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `partidp` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `partido` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `codigoPostal` int(5) DEFAULT NULL,
   `tel` int(20) DEFAULT NULL,
   `telAlternativo` int(20) DEFAULT NULL,
@@ -2076,17 +2093,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `latitud` int(11) DEFAULT NULL,
   `longitud` int(11) DEFAULT NULL,
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partidp`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`) VALUES
-(1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15486532, NULL, NULL, 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, 0, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Sanchez', 'Erick', 35800453, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456, NULL, NULL, 'erik@erik.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, NULL, 0, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Perez', 'Jose', 123456, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 54876532, NULL, NULL, 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
+(1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

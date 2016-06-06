@@ -1,6 +1,7 @@
 <?php
     session_start();
     include('./functions/funciones.php');
+    
     head('Logueo');
 ?>
     <?php 

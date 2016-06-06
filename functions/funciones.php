@@ -157,7 +157,7 @@ function sql_devuelve_detalle($tabla,$columna,$valor) // buscar por $valor en $c
     if(!$resultadodepend)
      {
        $mostrar="error en ingreso".mysql_error();
-       scr_mostrar($mostrar);
+       msgbox($mostrar);
      }
     else
       {   
@@ -173,11 +173,11 @@ function sql_eliminar($tabla,$columna,$id)
     $sql = "DELETE FROM ".$tabla." WHERE ".$columna." = ".$id."";
     if (mysql_query($sql)) 
     {
-            scr_mostrar('Se elimino el dato correctamente');
+            msgbox('Se elimino el dato correctamente');
     } 
     else 
     {
-            scr_mostrar('ERROR MYSQL');
+            msgbox('ERROR MYSQL');
     }
     desconectarBD();
 }
@@ -190,7 +190,7 @@ function sql_update_uno($tabla,$columnavalor,$valor,$columna,$id)
     $resultado=mysql_query($sql);
     if (!$resultado) 
     {
-            scr_mostrar('ERROR en la consulta SQL_UPDATE');
+            msgbox('ERROR en la consulta SQL_UPDATE');
     }
     desconectarBD();
 }
@@ -206,11 +206,12 @@ function sql_update_post($todoPOST,$tabla,$columna,$id_us) // le paso todo el po
             $resultado=mysql_query($sql);
             if (!$resultado) 
             {
-                    return false;
+                $error='ERROR en la consulta SQL_UPDATE'.print_r($key).'<br>'.print_r($value);
+                msgbox($error);
+                exit();
             }
     }
     desconectarBD();
-    return true;
 }
 
 
