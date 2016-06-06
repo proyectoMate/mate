@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-06-2016 a las 22:02:23
+-- Tiempo de generación: 05-06-2016 a las 22:44:14
 -- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.17
 
@@ -30,14 +30,24 @@ CREATE TABLE IF NOT EXISTS `escuelas` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `escuelas`
 --
 
 INSERT INTO `escuelas` (`id`, `detalle`) VALUES
-(1, 'I.S.F.T. 177');
+(2, 'ESCUELA SECUNDARIA BASICA Nº 13'),
+(3, 'ESCUELA SECUNDARIA BASICA Nº 15'),
+(4, 'ESCUELA SECUNDARIA BASICA Nº 19\r\n'),
+(5, 'ESCUELA SECUNDARIA BASICA Nº 21\r\n'),
+(6, 'ESCUELA SECUNDARIA BASICA Nº 22\r\n'),
+(7, 'ESCUELA SECUNDARIA BASICA Nº 23\r\n'),
+(8, 'ESCUELA SECUNDARIA BASICA Nº 27\r\n'),
+(9, 'ESCUELA SECUNDARIA BASICA Nº 29\r\n'),
+(10, 'ESCUELA SECUNDARIA BASICA Nº 3\r\n'),
+(11, 'ESCUELA SECUNDARIA BASICA Nº 31\r\n'),
+(12, 'ESCUELA SECUNDARIA BASICA Nº 34\r\n');
 
 -- --------------------------------------------------------
 
@@ -92,7 +102,15 @@ CREATE TABLE IF NOT EXISTS `horariosHabituales` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `horariosHabituales`
+--
+
+INSERT INTO `horariosHabituales` (`id`, `detalle`) VALUES
+(1, 'AM'),
+(2, 'PM');
 
 -- --------------------------------------------------------
 
@@ -104,7 +122,14 @@ CREATE TABLE IF NOT EXISTS `instituciones` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `instituciones`
+--
+
+INSERT INTO `instituciones` (`id`, `detalle`) VALUES
+(1, 'I.S.F.T. 177');
 
 -- --------------------------------------------------------
 
@@ -2047,7 +2072,17 @@ CREATE TABLE IF NOT EXISTS `titulos` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `titulos`
+--
+
+INSERT INTO `titulos` (`id`, `detalle`) VALUES
+(1, 'Tecnicatura Superior en Análisis de Sistemas'),
+(2, 'Tecnicatura Superior en Tecnología en Salud con especialidad en Laboratorio de Análisis Clínicos\r\n'),
+(3, 'Tecnicatura Superior en Administración Contable\r\n'),
+(4, 'Tecnicatura Superior en Gestión Ambiental y Salud\r\n');
 
 -- --------------------------------------------------------
 
@@ -2095,14 +2130,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
-(1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino');
+(1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
+(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'prueba', 'prueba', 1, 2, '1988-03-23', 'BOLIVAR', 0, 0, 'carlos', 1, 0, '-', '1', '1', 1, 123456, 11111111, 'suegra', 'prueba@prueba', 'tecnico', 2010, '3', '4', 'reparador de pc', '1', '2014', 'si', 'operario', '2', 'galeno', NULL, NULL, NULL, 'Femenino');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
