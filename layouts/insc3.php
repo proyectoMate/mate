@@ -1,7 +1,8 @@
 <?php
 if ($_POST['boton']=='registrar') 
 {
-    print_r($_POST);
+    sql_update_post($_POST, 'usuarios', 'dni', $_SESSION['usuario']);
+    msgbox("Aqui debe direccionar a otra pagina");
 }
 ?>
 <h2>Paso 3 de 3 </h2>
@@ -31,7 +32,11 @@ if ($_POST['boton']=='registrar')
     <div class="col-sm-4"><!-- Col N°3 -->
         <div class="form-group">
             <label class=" control-label" for="horarioHabitual">Horario habitual</label>  
-            <input id="horarioHabitual" name="horarioHabitual" type="text" placeholder="Horario habitual" class="form-control input-sm" required="">  
+            <!--<input id="horarioHabitual" name="horarioHabitual" type="text" placeholder="Horario habitual" class="form-control input-sm" required="">-->
+            <select id="horarioHabitual" name="horarioHabitual" class="form-control input-sm" required="">
+                <OPTION VALUE="1">AM</OPTION>';
+                <OPTION VALUE="2">PM</OPTION>';
+            </select>
         </div>
     </div>
     <div class="col-sm-4"><!-- Col N°3 -->
@@ -41,7 +46,7 @@ if ($_POST['boton']=='registrar')
         </div>
     </div>
 </div>
-
+<input type="hidden" name="rol_id" value="1">
 <div class="row">
     <div class="container-fluid">
         <input type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="registrar">

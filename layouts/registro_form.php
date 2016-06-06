@@ -61,6 +61,7 @@ if (isset($_POST['button']))
   </div>
 </div>
 <input type="hidden" name="estado" value="0">
+<input type="hidden" name="rol_id" value="0">
 
 <!-- Button -->
 <div class="form-group">

@@ -1,7 +1,6 @@
 <?php
 if ($_POST['boton']=='etapa2') 
 {
-    print_r($_POST);
     sql_update_post($_POST, 'usuarios', 'dni', $_POST['dni']);
     f_ir_a('inscripcion.php?etapa=2');
 }
