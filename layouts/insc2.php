@@ -1,5 +1,13 @@
+<?php
+$datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
+if ($_POST['boton']=='etapa2') 
+{
+    print_r($_POST);
+}
+?>
 <h2>Paso 2 de 3 </h2>
 <legend>Estudios Cursados</legend>
+<form action="" method="POST" role="form" autocomplete="off">
 <div class="row">
     <!-- Inicio Columna 1 -->
     <div class="col-sm-6">
@@ -56,7 +64,9 @@
 </div><!-- fin row3 -->
 <div class="row">
     <div class="container-fluid">
+        <button type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="etapa3"><span class="glyphicon glyphicon-arrow-right"></span></button>
         <a href="inscripcion.php?etapa=3" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-right"></span></a>
         <a href="javascript:history.back()" class="btn btn-block btn-lg btn-info"><span class="glyphicon glyphicon-arrow-left"></span></a>
     </div>
 </div>
+</form>

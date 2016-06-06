@@ -1,5 +1,12 @@
+<?php
+if ($_POST['boton']=='registrar') 
+{
+    print_r($_POST);
+}
+?>
 <h2>Paso 3 de 3 </h2>
 <legend>Datos Laborales</legend>
+<form action="" method="POST" role="form" autocomplete="off">
 <div class="row"><!-- Fila N°1 -->
     <div class="col-sm-4"><!-- Col N°1 -->
         <div class="form-group">
@@ -39,5 +46,6 @@
     <div class="container-fluid">
         <input type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="registrar">
         <a href="javascript:history.back()" class="btn btn-block btn-lg btn-info"><span class="glyphicon glyphicon-arrow-left"></span></a>
-    <div>
+    </div>
 </div>
+</form>        

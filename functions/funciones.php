@@ -91,6 +91,11 @@ function f_ir_a($pagina)
 			echo'<script>window.location="'.$pagina.'";</script>';
 }
 
+function volver($url)
+{
+    echo '<a href="./'.$url.'"><button type="button" class="btn btn-default btn-md">Volver</button></a>';   
+}
+
 
 # ================== funciones con conexion a la base de datos ===================
 function sql_crear_insert($post)
@@ -143,6 +148,71 @@ function sql_insert($tabla, $arrayPost)
   desconectarBD();
 }
 
+function sql_devuelve_detalle($tabla,$columna,$valor) // buscar por $valor en $columna de la $tabla y devuelve el detalle.
+{
+    require ('./config/db_conexion.php');
+    conectarBD();
+    $sqldepend = "SELECT * FROM ".$tabla." WHERE ".$columna."=".$valor;
+    $resultadodepend = mysql_query($sqldepend);
+    if(!$resultadodepend)
+     {
+       $mostrar="error en ingreso".mysql_error();
+       scr_mostrar($mostrar);
+     }
+    else
+      {   
+        return (mysql_fetch_array($resultadodepend, MYSQL_ASSOC));
+      }
+    desconectarBD();
+}
+
+function sql_eliminar($tabla,$columna,$id)
+{
+    require ('./config/db_conexion.php');
+    conectarBD();
+    $sql = "DELETE FROM ".$tabla." WHERE ".$columna." = ".$id."";
+    if (mysql_query($sql)) 
+    {
+            scr_mostrar('Se elimino el dato correctamente');
+    } 
+    else 
+    {
+            scr_mostrar('ERROR MYSQL');
+    }
+    desconectarBD();
+}
+
+function sql_update_uno($tabla,$columnavalor,$valor,$columna,$id)
+{
+    require ('./config/db_conexion.php');
+    conectarBD();
+    $sql = "UPDATE ".$tabla." SET ".$columnavalor." = '".$valor."' WHERE ".$columna." = ".$id."";
+    $resultado=mysql_query($sql);
+    if (!$resultado) 
+    {
+            scr_mostrar('ERROR en la consulta SQL_UPDATE');
+    }
+    desconectarBD();
+}
+
+function sql_update_post($todoPOST,$tabla,$columna,$id_us) // le paso todo el post, le paso la columna a validar y le paso el id a validar
+{
+    require ('./config/db_conexion.php');
+    array_pop($todoPOST);
+    conectarBD();
+    foreach ($todoPOST as $key => $value) 
+    {
+            $sql = "UPDATE ".$tabla." SET ".$key." = '".$value."' WHERE ".$columna." = ".$id_us."";
+            $resultado=mysql_query($sql);
+            if (!$resultado) 
+            {
+                    return false;
+            }
+    }
+    desconectarBD();
+    return true;
+}
+
 
 function usuarioLogin($usuario, $contrasenia)
 {
@@ -164,8 +234,4 @@ function usuarioLogin($usuario, $contrasenia)
       desconectarBD();
 } // fin usuarios
 
-function volver($url)
-{
-    echo '<a href="./'.$url.'"><button type="button" class="btn btn-default btn-md">Volver</button></a>';   
-}
 ?>

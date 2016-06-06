@@ -1,16 +1,29 @@
+<?php
+if ($_POST['boton']=='etapa2') 
+{
+    if(sql_update_post($_POST, 'usuarios', 'dni', $_SESSION['usuario']))
+    {
+        f_ir_a('inscripcion.php?etapa=2');
+    }
+    else{        msgbox('Verifique los datos ingresados');}
+    
+}
+$datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
+?>
 <h2>Paso 1 de 3 </h2>
 <legend>Datos Personales</legend>
+<form action="" method="POST" role="form" autocomplete="off">
 <div class="row"> <!-- Fila N°1 -->
     <div class="col-sm-4">
         <div class="form-group">
             <label class="control-label" for="apellido">Apellido</label>  
-            <input id="apellido" name="apellido" type="text" placeholder="Apellido" class="form-control input-sm" required="">  
+            <input id="apellido" name="apellido" type="text" class="form-control input-sm" readonly="" value="<?php echo $datosForm['apellido']?>">  
         </div>
     </div>
     <div class="col-sm-4">
         <div class="form-group">
             <label class="control-label" for="nombre">Nombre</label>  
-            <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-sm" required="">  
+            <input id="nombre" name="nombre" type="text" class="form-control input-sm" readonly="" value="<?php echo $datosForm['nombre']?>">   
         </div>
     </div>
     <div class="col-sm-4">
@@ -28,7 +41,7 @@
     <div class="col-sm-3">
         <div class="form-group">
             <label class="control-label" for="dni">DNI</label>  
-            <input id="dni" name="dni" type="number" placeholder="DNI" class="form-control input-sm" required="" min="0" max="99999999" autofocus>  
+            <input id="dni" name="dni" type="number" class="form-control input-sm" readonly="" value="<?php echo $_SESSION['usuario']?>">  
         </div>
     </div>
     <div class="col-sm-3">
@@ -40,7 +53,19 @@
     <div class="col-sm-5">
         <div class="form-group">
             <label class="control-label" for="lugarNacimiento">Lugar de Nacimiento</label>  
-            <input id="lugarNacimiento" name="lugarNacimiento" type="text" placeholder="Lugar de Nacimiento" class="form-control input-sm" required="">  
+            <!--<input id="lugarNacimiento" name="lugarNacimiento" type="text" placeholder="Lugar de Nacimiento" class="form-control input-sm" required="">-->
+            <select id="lugarNacimiento" name="lugarNacimiento" class="form-control input-sm" required="">
+                <?php
+                    conectarBD();
+                    $consulta="SELECT DISTINCT localidad FROM localidadPartidoCp";# consulta sql
+                    $sql=mysql_query($consulta);
+                    while($row = mysql_fetch_array($sql))
+                    {
+                    echo'<OPTION VALUE="'.$row['localidad'].'">'.$row['localidad'].'</OPTION>';
+                    }
+                    desconectarBD();
+                ?>
+            </select>
         </div>
     </div>
 </div><!-- FIN Fila N°2 -->
@@ -49,7 +74,19 @@
     <div class="col-sm-3"><!-- Col N°1 -->
         <div class="form-group">
             <label class="control-label" for="estadoCivil">Estado Civil</label>  
-            <input id="estadoCivil" name="estadoCivil" type="text" placeholder="Estado Civil" class="form-control input-sm" required="">  
+            <!--<input id="estadoCivil" name="estadoCivil" type="text" placeholder="Estado Civil" class="form-control input-sm" required="">-->
+            <select id="estadoCivil" name="estadoCivil" class="form-control input-sm" required="">
+                <?php
+                    conectarBD();
+                    $consulta="SELECT * from estadoCiviles";# consulta sql
+                    $sql=mysql_query($consulta);
+                    while($row = mysql_fetch_array($sql))
+                    {
+                    echo'<OPTION VALUE="'.$row['id'].'">'.$row['detalle'].'</OPTION>';
+                    }
+                    desconectarBD();
+                ?>
+            </select>
         </div>
     </div>
     <div class="col-sm-3"><!-- Col N°2 -->
@@ -121,13 +158,13 @@
     <div class="col-sm-4"><!-- Col N°2 -->
         <div class="form-group">
             <label class="control-label" for="tel">Tel&eacute;fono</label>  
-            <input id="tel" name="tel" type="number" placeholder="Tel&eacute;fono" class="form-control input-sm" required="">  
+            <input id="tel" name="tel" type="number"  class="form-control input-sm" readonly="" value="<?php echo $datosForm['tel']?>"> 
         </div>
     </div>
     <div class="col-sm-4"><!-- Col N°3 -->
         <div class="form-group">
             <label class="control-label" for="telAlternativo">Tel&eacute;fono alternativo</label>  
-            <input id="telAlternativo" name="telAlternativo" type="number" placeholder="Tel&eacute;fono alternativo" class="form-control input-sm" required="">  
+            <input id="telAlternativo" name="telAlternativo" type="number" placeholder="Tel&eacute;fono alternativo" class="form-control input-sm" required="" min="11111111" max="99999999999">  
         </div>
     </div>
 </div><!-- Fin N°5 -->
@@ -142,13 +179,13 @@
     <div class="col-sm-5"><!-- Col N°2 -->
         <div class="form-group">
             <label class="control-label" for="email">Correo electr&oacute;nico</label>  
-            <input id="email" name="email" type="email" placeholder="Correo electr&oacute;nico" class="form-control input-sm" required="">  
+            <input id="email" name="email" type="email" class="form-control input-sm" readonly="" value="<?php echo $datosForm['email']?>">  
         </div>
     </div>
 </div><!-- Fin N°6 -->
 <div class="row">
     <div class="container-fluid">
-        <input type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="etapa2">
-        <a href="inscripcion.php?etapa=2" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-arrow-right"></span></a>
+        <button type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="etapa2"><span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
 </div>
+</form>
