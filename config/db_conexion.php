@@ -10,15 +10,16 @@ function definirdatosBD($pass,$name, $host='localhost',$user='root')
 
 function conectarBD()
 {
-        definirdatosBD('33667241a', 'proyectoMate');
-        Global $conexion; 
+        definirdatosBD('root', 'proyectoMate');
+        global $conexion; 
         $conexion=mysql_connect(HOST_DB,USER_DB,PASS_DB)
         OR die('NO SE PUEDE ABRIR BD');
         mysql_select_db(NAME_DB) or die('NO SE ENCONTRO BD');
 }
 
 function desconectarBD()
-{
+{       
+        global $conexion;
         mysql_close($conexion);
 }
 ?>
