@@ -1,0 +1,40 @@
+.boton
+	 {
+	    font-size:10px;
+	    height:19px;
+	    text-align: center;
+      }
+
+.boton-control
+{
+	border-color: lightblue;
+	 border: 1px solid #CED5D7;
+    box-shadow:0 0 0 1px lightblue;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: arial;
+    text-shadow: 1px 1px 0px white;
+
+}
+
+.no
+   {
+		text-align: center;
+		height:165px; /*espacio de abajo de los div*/
+	}
+
+.form
+	{
+		text-align: center;
+	 	box-shadow: 10px 5px 30px #B5C1C5,0 0 0 100px #EEF5F7 inset;/*sombra d abajo.brilo del color de fondo. */ 
+    	display: block; /* esto es para que el label se sobreponga a la caja de texto */
+   		font-weight: arial;
+    	margin-bottom: 10px; /* esto los separara un poco */	
+	}
+
+
+.form-control
+{   height:40px; /*espacio de abajo de los div*/
+	width: 500px; /*ancho de las cajitas*/
+	padding: 5px;
+}
