@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2016 at 08:36 PM
+-- Generation Time: Jun 06, 2016 at 08:47 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -2111,6 +2111,20 @@ INSERT INTO `roles` (`id`, `detalle`) VALUES
 (7, 'director'),
 (8, 'erik'),
 (9, 'juanCarlosRoot');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subMenus`
+--
+
+CREATE TABLE IF NOT EXISTS `subMenus` (
+  `id` int(10) NOT NULL,
+  `idMenu` int(10) NOT NULL,
+  `nombreSubMenu` varchar(45) NOT NULL,
+  `linkSubMenu` varchar(45) NOT NULL,
+  `descSubmenu` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
