@@ -1,5 +1,6 @@
 <?php
     session_start();
+    echo $_SESSION["id"]."idasfasdfasdf";
     header("Content-Type: text/html; charset=ISO-8859-1");
     require("functions/generales.php");
 
