@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2016 at 08:47 PM
+-- Generation Time: Jun 06, 2016 at 11:50 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -2087,6 +2087,26 @@ INSERT INTO `perfiles` (`id`, `nombre`, `descripcion`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `perfilesMenu`
+--
+
+CREATE TABLE IF NOT EXISTS `perfilesMenu` (
+  `idPerfil` int(2) NOT NULL,
+  `idMenu` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `perfilesMenu`
+--
+
+INSERT INTO `perfilesMenu` (`idPerfil`, `idMenu`) VALUES
+(1, 1),
+(1, 2),
+(6, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -2194,15 +2214,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
-(1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
-(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'prueba', 'prueba', 1, 2, '1988-03-23', 'BOLIVAR', 0, 0, 'carlos', 1, 0, '-', '1', '1', 1, 123456, 11111111, 'suegra', 'prueba@prueba', 'tecnico', 2010, '3', '4', 'reparador de pc', '1', '2014', 'si', 'operario', '2', 'galeno', NULL, NULL, NULL, 'Femenino'),
+(1, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Root', 'Administrador', 123456789, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456789, NULL, NULL, 'root@root', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
 (3, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino');
 
 -- --------------------------------------------------------
@@ -2216,7 +2236,15 @@ CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
   `id_usuario` int(10) NOT NULL,
   `id_perfil` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `usuariosPerfiles`
+--
+
+INSERT INTO `usuariosPerfiles` (`id`, `id_usuario`, `id_perfil`) VALUES
+(1, 1, 1),
+(2, 3, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

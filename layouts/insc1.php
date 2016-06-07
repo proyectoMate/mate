@@ -1,3 +1,29 @@
+<script language="javascript">
+    $(document).ready(function(){
+       $("#partido").change(function () {
+               $("#partido option:selected").each(function () {
+                elegido=$(this).val();
+                $.post("data/localidades.php", { elegido: elegido }, function(data){
+                $("#localidad").html(data);
+                });            
+            });
+       })
+    });
+
+    $(document).ready(function(){
+       $("#localidad").change(function () 
+       {
+           $("#localidad option:selected").each(function () 
+           {
+                elegido=$(this).val();
+                $.post("data/cp.php", { elegido: elegido }, function(data)
+                {
+                    $("#codigoPostal").html(data);
+                });            
+            });
+       })
+    });
+</script>
 <?php
 if ($_POST['boton']=='etapa2') 
 {
@@ -53,11 +79,11 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
             <select id="lugarNacimiento" name="lugarNacimiento" class="form-control input-sm" required="">
                 <?php
                     conectarBD();
-                    $consulta="SELECT DISTINCT localidad FROM localidadPartidoCp";# consulta sql
+                    $consulta="SELECT DISTINCT partido,cod_partido FROM localidadPartidoCp";# consulta sql
                     $sql=mysql_query($consulta);
                     while($row = mysql_fetch_array($sql))
                     {
-                    echo'<OPTION VALUE="'.$row['localidad'].'">'.$row['localidad'].'</OPTION>';
+                    echo'<OPTION VALUE="'.$row['cod_partido'].'">'.$row['partido'].'</OPTION>';
                     }
                     desconectarBD();
                 ?>
@@ -132,14 +158,34 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
 <div class="row"><!-- Fila N°4 -->
     <div class="col-sm-5"><!-- Col N°1 -->
         <div class="form-group">
-           <label class="control-label" for="localidad">Localidad</label>  
-           <input id="localidad" name="localidad" type="text" placeholder="Localidad" class="form-control input-sm" required="">  
+            <label class="control-label" for="partidp">Partido</label>
+            <select id="partido" name="partido" type="text" class="form-control" required>
+                <?php
+                    conectarBD();
+
+                    $sql = "SELECT DISTINCT partido,cod_partido FROM localidadPartidoCp";
+                    $resultado = mysql_query($sql);
+                    if (!$resultado) 
+                    {
+                        echo "La consulta contiene errores.";
+                        exit();
+                    }
+                    else
+                    {
+                        while($fila = mysql_fetch_array($resultado, MYSQL_ASSOC))
+                        {
+                            echo "<option value='".$fila["cod_partido"]."'>".$fila["partido"]."</option>";
+                        }
+                    } 
+                ?>
+            </select>  
         </div>
     </div>
     <div class="col-sm-5"><!-- Col N°2 -->
         <div class="form-group">
-            <label class="control-label" for="partidp">Barrio / Partido</label>  
-            <input id="partido" name="partido" type="text" placeholder="Barrio / Partido" class="form-control input-sm" required="">  
+           <label class="control-label" for="localidad">Localidad / Barrio</label> 
+           <select id="localidad" name="localidad" type="text" class="form-control" required>
+           </select>
         </div>
     </div>
 </div><!-- Fin N°4 -->
@@ -147,8 +193,9 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
 <div class="row"><!-- Fila N°5 -->
     <div class="col-sm-3"><!-- Col N°1 -->
         <div class="form-group">
-            <label class="control-label" for="codigoPostal">C&oacute;digo Postal</label>  
-            <input id="codigoPostal" name="codigoPostal" type="text" placeholder="C&oacute;digo Postal" class="form-control input-sm" required="">  
+            <label class="control-label" for="codigoPostal">C&oacute;digo Postal</label>
+            <select id="codigoPostal" name="codigoPostal" type="text" class="form-control" required>
+           </select>
         </div>
     </div>
     <div class="col-sm-4"><!-- Col N°2 -->

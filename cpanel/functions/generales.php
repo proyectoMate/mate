@@ -261,23 +261,29 @@ function top_menu(){
 <?php
 };
 
-function left_menu($perfil=1){
+function left_menu($id_user=0){
 ?>
 <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         <?php
-                        $sql = "SELECT m.linkMenu AS linkMenu, 
-                                       m.nombreMenu AS nombreMenu, 
-                                       sm.nombreSubMenu AS nombreSubMenu 
-                                FROM menus AS m
-                                LEFT JOIN subMenus AS sm ON m.id = sm.idMenu"; 
+                        $sql = "SELECT u.id as id,
+                                       u.rol_id as ro_id, 
+                                       up.id_perfil as id_perfil, 
+                                       pm.idMenu as idMenu, 
+                                       m.nombreMenu as nombreMenu,
+                                       m.linkMenu as link_menu 
+                                FROM usuarios as u
+                                INNER JOIN usuariosPerfiles as up ON u.id =  up.id_usuario
+                                INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil
+                                INNER JOIN menus as m on pm.idMenu = m.id
+                                WHERE u.id = $id_user"; 
                         //echo $sql;
                         conectarBD();
                         $respuesta = mysql_query($sql);
                         desconectarBD();
 
-
+                        if($id_user != 0){
                         while ($reg=mysql_fetch_array($respuesta)){
                             //echo $reg['id']." ".$reg['nombreMenu'];
                             //print_r($reg);
@@ -286,7 +292,7 @@ function left_menu($perfil=1){
                                   </li>";
 
                         }
-
+                        }
                         ?>
 <!--                         <li>
                             <a href="#"><i class="fa fa-home fa-fw"></i>Panel de Control</a>
