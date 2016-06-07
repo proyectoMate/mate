@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2016 at 11:50 PM
+-- Generation Time: Jun 07, 2016 at 12:31 AM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -2222,8 +2222,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
 (1, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Root', 'Administrador', 123456789, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456789, NULL, NULL, 'root@root', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
-(3, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino');
+(2, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
+(3, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino');
 
 -- --------------------------------------------------------
 
@@ -2244,7 +2244,7 @@ CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
 
 INSERT INTO `usuariosPerfiles` (`id`, `id_usuario`, `id_perfil`) VALUES
 (1, 1, 1),
-(2, 3, 1);
+(2, 3, 6);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
