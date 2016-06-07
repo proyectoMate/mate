@@ -1,7 +1,6 @@
 <?php
 	require('fpdf/code128.php');
 	require_once("config/db_conexion.php");
-	$idUsuario = $_GET["id"];
 
 	conectarBD();
 
