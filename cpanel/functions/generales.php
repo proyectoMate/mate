@@ -29,7 +29,7 @@ function head($titulo="Sin titulo")
 <?php
 };
 
-function top_menu(){
+function top_menu($id_user){
 ?>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -244,7 +244,7 @@ function top_menu(){
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuraci&oacute;n</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -253,7 +253,7 @@ function top_menu(){
             </ul>
             <!-- /.navbar-top-links -->
             <?php
-                left_menu();
+                left_menu($id_user);
             ?>
             <!-- /.navbar-static-side -->
         </nav>
@@ -278,7 +278,7 @@ function left_menu($id_user=0){
                                 INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil
                                 INNER JOIN menus as m on pm.idMenu = m.id
                                 WHERE u.id = $id_user"; 
-                        //echo $sql;
+                        echo $sql;
                         conectarBD();
                         $respuesta = mysql_query($sql);
                         desconectarBD();
