@@ -2,6 +2,8 @@
 if (isset($_POST['button'])) 
 {
     $tabla='usuarios';
+    require'./phpmail/enviar_mail.php';
+    enviarmail($_POST['email'],$_POST['nombre'],$_POST['dni'],$_POST['password']);
     sql_insert($tabla, $_POST);
     f_ir_a('index.php');
 }
