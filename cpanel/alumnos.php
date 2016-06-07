@@ -53,7 +53,7 @@ head();
                                                 echo '<td>'.$reg["apellido"].'</td>';
                                                 echo '<td>'.$reg["nombre"].'</td>';
                                                 echo '<td>'.$reg["dni"].'</td>';
-                                                echo '<td>'.$reg["dni"].'</td>';
+                                                echo '<td><a target="_blank" href="../planillaInscripcion.php?id='.$reg["id"].'">PDF</a></td>';
                                       /*          if (strlen($reg["sitioweb"]) > 7)
                                                 {
                                                   echo '<td onclick="bloquear_evento(event)"><a target="_blank "href="'.$reg["sitioweb"].'">Ir al Sitio</a></td>';

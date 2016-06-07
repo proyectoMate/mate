@@ -1,6 +1,12 @@
 <?php
+    session_start();
     header("Content-Type: text/html; charset=ISO-8859-1");
     require("functions/generales.php");
+
+/*    SELECT u.id, u.rol_id, up.id_perfil, pm.idMenu, m.nombreMenu FROM usuarios as u
+INNER JOIN usuariosPerfiles as up ON u.id =  up.id_usuario
+INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil
+INNER JOIN menus as m on pm.idMenu = m.id*/
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +20,7 @@ head();
      <div id="wrapper">
 
             <?php
-                top_menu();
+                top_menu($_SESSION["id"]);
             ?>
 
         <div id="page-wrapper">
