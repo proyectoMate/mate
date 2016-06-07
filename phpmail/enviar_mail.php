@@ -1,17 +1,31 @@
 <?php
+/**
+  * Este ejemplo muestra las opciones para usar cuando se envían a través de los servidores de Gmail de Google.
+  */
 
-$email='vegaluis.v@gmail.com';
-$asunto='Nuevo Reclamo';
-$nomyape='Sin Datos';
-$cuerpo='Nuevo reclamo falta crear cuerpo';
+// SMTP necesita tiempos precisos, y la zona horaria PHP deberá ser fijado
+// Esto debe hacerse en su php.ini, pero esta es la forma de hacerlo si no tiene acceso a esa
+function enviarmail($enviarA='vegaluis.v@gmail.com',$nomyape='Luis Vega',$dni,$pass,$serv='localhost',$asunto='Activacion de su cuenta en Proyecto Mate')
+{
 
-$email=$_POST['email'];
-$asunto=$_POST['asunto'];
-$nomyape=$_POST['nomyape'];
-$cuerpo=$_POST['cuerpo'];
+date_default_timezone_set('Etc/UTC');
 
-require './PHPMailer/PHPMailerAutoload.php';
+require 'PHPMailerAutoload.php';
 
+
+$cuerpo='
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<h2>Gracias por registrarse, como ultimo paso para poder acceder con su usuario: '.$dni.' y password: '.$pass.'</h2>
+<br><br>
+<a href="'.$serv.'/mate/validar.php?x='.sha1($dni).'&y='.sha1($pass).'" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-envelope"></span> Confirmar Mail</a>
+</body>
+</html>';
 // Crear una nueva instancia PHPMailer
 $mail = new PHPMailer;
 
@@ -49,13 +63,13 @@ $mail->Username = "reclamostecnico.ddi@gmail.com";
 $mail->Password = "sistemas2016";
 
 // Set que se va a enviar el mensaje de
-$mail->setFrom('reclamostecnico.ddi@gmail.com', 'Reclamos Tecnicos');
+$mail->setFrom('info.proyectomate@gmail.com', 'Proyecto Mate');
 
 // Establecer una alternativa dirección de respuesta
-$mail->addReplyTo('reclamostecnico.ddi@gmail.com', 'Reclamos Tecnicos');
+$mail->addReplyTo('info.proyectomate@gmail.com', 'Proyecto Mate');
 
 // Set que se va a enviar al mensaje
-$mail->addAddress($email, $nomyape);
+$mail->addAddress($enviarA, $nomyape);
 
 // Establecer la línea de asunto
 $mail->Subject = $asunto;
@@ -76,3 +90,5 @@ if (!$mail->send()) {
 } else {
     echo "Message sent!";
 }
+
+} // fin funcion
