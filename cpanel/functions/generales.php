@@ -1,6 +1,7 @@
 <?php
 
-require("../config/db_conexion.php");
+//require("../config/db_conexion.php");
+require("db_conexion.php");
 
 function head($titulo="Sin titulo")
 {
