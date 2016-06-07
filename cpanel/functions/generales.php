@@ -278,7 +278,7 @@ function left_menu($id_user=0){
                                 INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil
                                 INNER JOIN menus as m on pm.idMenu = m.id
                                 WHERE u.id = $id_user"; 
-                        echo $sql;
+                        //echo $sql;
                         conectarBD();
                         $respuesta = mysql_query($sql);
                         desconectarBD();
