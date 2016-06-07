@@ -1,5 +1,9 @@
 <?php
 	require('fpdf/code128.php');
+	require_once("config/db_conexion.php");
+	$idUsuario = $_GET["id"];
+
+	conectarBD();
 
 	//Creo un objeto de la clase Code128 donde:
 	//P es la orientación de la hoja
@@ -233,4 +237,4 @@
 	//"I" lo muestra en el navegador
 	$apeNom = str_replace(" ", "_", $apeNom);
 	$pdf->Output("Formulario_A1_".$apeNom,"I",".pdf");
-?>
+?>.pdf
