@@ -1,16 +1,12 @@
 <?php
 /* conexion con base de datos */
-function definirdatosBD($pass,$name, $host='localhost',$user='root')
-{
-        define('HOST_DB', $host);
-        define('USER_DB', $user);
-        define('PASS_DB', $pass);
-        define('NAME_DB', $name);
-}
+        define('HOST_DB', 'localhost');
+        define('USER_DB', 'root');
+        define('PASS_DB', 'root');
+        define('NAME_DB', 'proyectoMate');
 
 function conectarBD()
 {
-        definirdatosBD('33667241a', 'proyectoMate');
         global $conexion; 
         $conexion=mysql_connect(HOST_DB,USER_DB,PASS_DB)
         OR die('NO SE PUEDE ABRIR BD');
@@ -18,8 +14,8 @@ function conectarBD()
 }
 
 function desconectarBD()
-{       
-        global $conexion;
+{               
+                global $conexion;
         mysql_close($conexion);
 }
 ?>

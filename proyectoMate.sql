@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 05-06-2016 a las 22:44:14
--- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.17
+-- Host: localhost
+-- Generation Time: Jun 06, 2016 at 08:47 PM
+-- Server version: 5.5.49-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `proyectoMate`
+-- Database: `proyectoMate`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `escuelas`
+-- Table structure for table `escuelas`
 --
 
 CREATE TABLE IF NOT EXISTS `escuelas` (
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `escuelas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=13 ;
 
 --
--- Volcado de datos para la tabla `escuelas`
+-- Dumping data for table `escuelas`
 --
 
 INSERT INTO `escuelas` (`id`, `detalle`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `escuelas` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estadoCiviles`
+-- Table structure for table `estadoCiviles`
 --
 
 CREATE TABLE IF NOT EXISTS `estadoCiviles` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `estadoCiviles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `estadoCiviles`
+-- Dumping data for table `estadoCiviles`
 --
 
 INSERT INTO `estadoCiviles` (`id`, `detalle`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `estadoCiviles` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estados`
+-- Table structure for table `estados`
 --
 
 CREATE TABLE IF NOT EXISTS `estados` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `estados` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `estados`
+-- Dumping data for table `estados`
 --
 
 INSERT INTO `estados` (`id`, `detalle`) VALUES
@@ -95,7 +95,7 @@ INSERT INTO `estados` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `horariosHabituales`
+-- Table structure for table `horariosHabituales`
 --
 
 CREATE TABLE IF NOT EXISTS `horariosHabituales` (
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `horariosHabituales` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `horariosHabituales`
+-- Dumping data for table `horariosHabituales`
 --
 
 INSERT INTO `horariosHabituales` (`id`, `detalle`) VALUES
@@ -115,7 +115,7 @@ INSERT INTO `horariosHabituales` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `instituciones`
+-- Table structure for table `instituciones`
 --
 
 CREATE TABLE IF NOT EXISTS `instituciones` (
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `instituciones` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `instituciones`
+-- Dumping data for table `instituciones`
 --
 
 INSERT INTO `instituciones` (`id`, `detalle`) VALUES
@@ -134,23 +134,23 @@ INSERT INTO `instituciones` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `localidadPartidoCp`
+-- Table structure for table `localidadPartidoCp`
 --
 
 CREATE TABLE IF NOT EXISTS `localidadPartidoCp` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `localidad` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `cod_localidad` int(5) DEFAULT NULL,
   `partido` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cod_partido` int(5) DEFAULT NULL,
+  `localidad` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cp` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1882 ;
 
 --
--- Volcado de datos para la tabla `localidadPartidoCp`
+-- Dumping data for table `localidadPartidoCp`
 --
 
-INSERT INTO `localidadPartidoCp` (`id`, `localidad`, `cod_localidad`, `partido`, `cp`) VALUES
+INSERT INTO `localidadPartidoCp` (`id`, `partido`, `cod_partido`, `localidad`, `cp`) VALUES
 (1, 'BOLIVAR', 105, 'PIROVANO', 6551),
 (2, 'BOLIVAR', 105, 'BOL-VAR', 6550),
 (3, 'BOLIVAR', 105, 'HALE', 6511),
@@ -1183,7 +1183,7 @@ INSERT INTO `localidadPartidoCp` (`id`, `localidad`, `cod_localidad`, `partido`,
 (1030, 'MERLO', 539, 'BARRIO OMB+', 1722),
 (1031, 'MERLO', 539, 'LAS CAMPANILLAS', 1722),
 (1032, 'MERLO', 539, 'VILLA POSSE', 1722);
-INSERT INTO `localidadPartidoCp` (`id`, `localidad`, `cod_localidad`, `partido`, `cp`) VALUES
+INSERT INTO `localidadPartidoCp` (`id`, `partido`, `cod_partido`, `localidad`, `cp`) VALUES
 (1033, 'MERLO', 539, 'LOS PARA-SOS', 1716),
 (1034, 'MERLO', 539, 'BARRIO MATERA', 1722),
 (1035, 'MERLO', 539, 'LA TEJA', 1722),
@@ -2037,7 +2037,57 @@ INSERT INTO `localidadPartidoCp` (`id`, `localidad`, `cod_localidad`, `partido`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `menus`
+--
+
+CREATE TABLE IF NOT EXISTS `menus` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `nombreMenu` varchar(45) NOT NULL,
+  `linkMenu` varchar(45) NOT NULL,
+  `descMenu` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `nombreMenu`, `linkMenu`, `descMenu`) VALUES
+(1, 'Administración', 'administracion.php', 'Administrar configuración y características del Si'),
+(2, 'Alumnos', 'alumnos.php', 'Permite Administrar los alumnos');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perfiles`
+--
+
+CREATE TABLE IF NOT EXISTS `perfiles` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `perfiles`
+--
+
+INSERT INTO `perfiles` (`id`, `nombre`, `descripcion`, `estado`) VALUES
+(1, 'Administrador', 'Administrador del Sistema', 1),
+(2, 'Directorio', '', 1),
+(3, 'Secretario', '', 1),
+(4, 'Preceptor', '', 1),
+(5, 'Docente', '', 1),
+(6, 'Alumno', '', 1),
+(7, 'Preinscripto', '', 1),
+(8, 'Aspirante', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -2047,7 +2097,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `detalle`) VALUES
@@ -2065,7 +2115,21 @@ INSERT INTO `roles` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `titulos`
+-- Table structure for table `subMenus`
+--
+
+CREATE TABLE IF NOT EXISTS `subMenus` (
+  `id` int(10) NOT NULL,
+  `idMenu` int(10) NOT NULL,
+  `nombreSubMenu` varchar(45) NOT NULL,
+  `linkSubMenu` varchar(45) NOT NULL,
+  `descSubmenu` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titulos`
 --
 
 CREATE TABLE IF NOT EXISTS `titulos` (
@@ -2075,7 +2139,7 @@ CREATE TABLE IF NOT EXISTS `titulos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `titulos`
+-- Dumping data for table `titulos`
 --
 
 INSERT INTO `titulos` (`id`, `detalle`) VALUES
@@ -2087,7 +2151,7 @@ INSERT INTO `titulos` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -2130,15 +2194,29 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
 (1, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
-(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'prueba', 'prueba', 1, 2, '1988-03-23', 'BOLIVAR', 0, 0, 'carlos', 1, 0, '-', '1', '1', 1, 123456, 11111111, 'suegra', 'prueba@prueba', 'tecnico', 2010, '3', '4', 'reparador de pc', '1', '2014', 'si', 'operario', '2', 'galeno', NULL, NULL, NULL, 'Femenino');
+(2, 1, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'prueba', 'prueba', 1, 2, '1988-03-23', 'BOLIVAR', 0, 0, 'carlos', 1, 0, '-', '1', '1', 1, 123456, 11111111, 'suegra', 'prueba@prueba', 'tecnico', 2010, '3', '4', 'reparador de pc', '1', '2014', 'si', 'operario', '2', 'galeno', NULL, NULL, NULL, 'Femenino'),
+(3, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuariosPerfiles`
+--
+
+CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(10) NOT NULL,
+  `id_perfil` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
