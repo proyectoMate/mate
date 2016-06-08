@@ -1,6 +1,7 @@
 <?php
 if ($_POST['boton']=='registrar') 
 {
+    $_POST['estado']=2; // segun aconseja erik aca obligo a que el estado no sea modificado en el form
     sql_update_post($_POST, 'usuarios', 'dni', $_SESSION['usuario']);
     f_ir_a('inscripcion.php?etapa=4');
 }
@@ -13,8 +14,10 @@ if ($_POST['boton']=='registrar')
         <div class="form-group">
             <label class="control-label" for="trabaja">Trabaja: </label> 
             <div class="form-group">
-                <label class="col-sm-offset-1 radio-inline" for="trabaja-0"><input type="radio" name="trabaja" id="trabaja-0" value="si">Si</label> 
-                <label class="radio-inline" for="trabaja-1">                <input type="radio" name="trabaja" id="trabaja-1" value="no">No</label> 
+                <label class="col-sm-offset-1 radio-inline" for="trabaja-0">
+                    <input type="radio" name="trabaja" id="trabaja-0" value="si">Si</label> 
+                <label class="radio-inline" for="trabaja-1">
+                    <input type="radio" name="trabaja" id="trabaja-1" value="no">No</label> 
             </div>
         </div>
     </div>
@@ -33,20 +36,21 @@ if ($_POST['boton']=='registrar')
         <div class="form-group">
             <label class=" control-label" for="horarioHabitual">Horario habitual</label>  
             <!--<input id="horarioHabitual" name="horarioHabitual" type="text" placeholder="Horario habitual" class="form-control input-sm" required="">-->
-            <select id="horarioHabitual" name="horarioHabitual" class="form-control input-sm" required="">
-                <OPTION VALUE="1">AM</OPTION>';
-                <OPTION VALUE="2">PM</OPTION>';
+            <select id="horarioHabitual" name="horarioHabitual" class="form-control input-sm">
+                <OPTION VALUE="0">--</OPTION>
+                <OPTION VALUE="1">AM</OPTION>
+                <OPTION VALUE="2">PM</OPTION>
             </select>
         </div>
     </div>
     <div class="col-sm-4"><!-- Col N°3 -->
         <div class="form-group">
             <label class=" control-label" for="obraSocial">Obra Social</label>  
-            <input id="obraSocial" name="obraSocial" type="text" placeholder="Obra Social" class="form-control input-sm" required="">  
+            <input id="obraSocial" name="obraSocial" type="text" placeholder="Obra Social" class="form-control input-sm" >  
         </div>
     </div>
 </div>
-<input type="hidden" name="rol_id" value="6">
+<input type="hidden" name="estado" value="2">
 <div class="row">
     <div class="container-fluid">
         <input type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="registrar">

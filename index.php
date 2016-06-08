@@ -15,13 +15,21 @@
 			if ($resultado["estado"]==0) 
 			{
 				msgbox('Aun no esta activo, hable con el administrador');
-                                f_ir_a('index.php');
+                f_ir_a('index.php');
 			}
 			else
 			{
-				if ($resultado["estado"]==1) 
+				if ($resultado["estado"]==1) // si esta activo, acepto el mail pero no completo los datos debe completarlos.
 				{
 					f_ir_a('./inscripcion.php');
+				}
+				if ($resultado["estado"]==2) // si confirmo mail y se registro que valla al panel
+				{
+			        f_ir_a('./inscripcion.php?etapa=4');
+				}
+				if ($resultado["estado"]>2) // si confirmo mail y se registro que valla al panel
+				{
+			        f_ir_a('./cpanel/index.php');
 				}
 			}
 		}

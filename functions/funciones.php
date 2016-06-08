@@ -1,6 +1,7 @@
 <?php
     date_default_timezone_set('America/Argentina/Buenos_Aires');
     error_reporting(E_ERROR);
+    require ('./config/db_conexion.php');
 
 function head($titulo='Sin titulo')
 {?>           
@@ -131,7 +132,7 @@ function sql_crear_insert($post)
 
 function sql_insert($tabla, $arrayPost)
 {
-  require ('./config/db_conexion.php');
+  
   $sql="INSERT INTO ".$tabla.sql_crear_insert($arrayPost);
   #  etapa de conectar con la BD
   conectarBD();
@@ -150,7 +151,7 @@ function sql_insert($tabla, $arrayPost)
 
 function sql_devuelve_detalle($tabla,$columna,$valor) // buscar por $valor en $columna de la $tabla y devuelve el detalle.
 {
-    require ('./config/db_conexion.php');
+    
     conectarBD();
     $sqldepend = "SELECT * FROM ".$tabla." WHERE ".$columna."=".$valor;
     $resultadodepend = mysql_query($sqldepend);
@@ -168,7 +169,7 @@ function sql_devuelve_detalle($tabla,$columna,$valor) // buscar por $valor en $c
 
 function sql_eliminar($tabla,$columna,$id)
 {
-    require ('./config/db_conexion.php');
+    
     conectarBD();
     $sql = "DELETE FROM ".$tabla." WHERE ".$columna." = ".$id."";
     if (mysql_query($sql)) 
@@ -184,7 +185,7 @@ function sql_eliminar($tabla,$columna,$id)
 
 function sql_update_uno($tabla,$columnavalor,$valor,$columna,$id)
 {
-    require ('./config/db_conexion.php');
+    
     conectarBD();
     $sql = "UPDATE ".$tabla." SET ".$columnavalor." = '".$valor."' WHERE ".$columna." = ".$id."";
     $resultado=mysql_query($sql);
@@ -197,7 +198,7 @@ function sql_update_uno($tabla,$columnavalor,$valor,$columna,$id)
 
 function sql_update_post($todoPOST,$tabla,$columna,$id_us) // le paso todo el post, le paso la columna a validar y le paso el id a validar
 {
-    require ('./config/db_conexion.php');
+    
     array_pop($todoPOST);
     conectarBD();
     foreach ($todoPOST as $key => $value) 
@@ -217,7 +218,7 @@ function sql_update_post($todoPOST,$tabla,$columna,$id_us) // le paso todo el po
 
 function usuarioLogin($usuario, $contrasenia)
 {
-  require ('./config/db_conexion.php');
+  
 	conectarBD();
 	$contrasenia = sha1($contrasenia);
 

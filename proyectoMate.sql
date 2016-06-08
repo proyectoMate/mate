@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-06-2016 a las 23:27:05
+-- Tiempo de generación: 08-06-2016 a las 01:30:14
 -- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.17
 
@@ -105,16 +105,24 @@ CREATE TABLE IF NOT EXISTS `estados` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `estados`
 --
 
 INSERT INTO `estados` (`id`, `detalle`) VALUES
-(0, 'Desactivado'),
-(1, 'Activado'),
-(2, 'Bloqueado');
+(0, 'sin validar'),
+(1, 'valido mail'),
+(2, 'registrado'),
+(3, 'preinscripto'),
+(4, 'inscripto'),
+(5, 'alumno'),
+(6, 'profesor'),
+(7, 'preceptor'),
+(8, 'director'),
+(9, 'erik'),
+(10, 'juanCarlosRoot');
 
 -- --------------------------------------------------------
 
@@ -2318,7 +2326,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`, `idInstituto`, `idCarreras`, `idTurno`, `anio`) VALUES
 (1, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Root', 'Administrador', 123456789, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456789, NULL, NULL, 'root@root', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'asdas', '2', 'asdasd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino', NULL, NULL, NULL, NULL),
+(2, 6, 3, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', '840', 0, 0, 'caros tejedor', 2214, 1, 'A', 'LIBERTAD', '539', 1888, 15486532, 2147483647, 'Soledad Suarez', 'asd@asd', 'Tecnico Electronico', 2005, '4', 'San Martin', '', '', '', 'si', '', '0', '', NULL, NULL, NULL, 'Masculino', 1, 3, 'noche', '2016'),
 (3, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino', NULL, NULL, NULL, NULL),
 (4, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Zenon', 'Karina', 27305444, 1, '1978-07-26', '539', 0, 0, 'Guemes ', 2570, 0, '3', 'MERLO/ARGENTINO/LOMA', '539', 1722, 123456778, 123456789, 'PapÃ¡', 'karizenon07@gmail.com', 'Bachiller en ComputaciÃ³n', 1996, '10', 'Merlo', 'Profesorado en MatemÃ¡tica', '1', '2008', 'si', 'Doncente', '2', 'IOMA', NULL, NULL, NULL, NULL, 1, 3, 'noche', '2016'),
 (5, 6, 1, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'gerea', 'maria florencia', 37787983, 1, '1994-02-28', '539', 0, 0, 'ascasubi', 1080, 0, '-', 'SAN ANTONIO DE PADUA', '539', 1718, 1167046805, 2147483647, 'casa', 'flormariaa22@gmail.com', NULL, NULL, 'instituto superior de formacion tecnica n 177', NULL, NULL, NULL, NULL, NULL, 'alumno', NULL, NULL, NULL, NULL, NULL, 'Femenino', 1, 1, 'noche', '2017');

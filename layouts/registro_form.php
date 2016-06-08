@@ -1,6 +1,8 @@
 <?php
 if (isset($_POST['button'])) 
 {
+    $_POST['rol_id']=6;
+    $_POST['estado']=0;
     $tabla='usuarios';
     require'./phpmail/enviar_mail.php';
     enviarmail($_POST['email'],$_POST['nombre'],$_POST['dni'],$_POST['password']);
@@ -77,7 +79,7 @@ if (isset($_POST['button']))
   </div>
 </div>
 <input type="hidden" name="estado" value="0">
-<input type="hidden" name="rol_id" value="0">
+<input type="hidden" name="rol_id" value="6">
 
 <!-- Button -->
 <div class="form-group">

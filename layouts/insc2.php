@@ -57,7 +57,7 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
     <div class="col-sm-11">
         <div class="form-group">
                 <label class="control-label" for="otrosEstudios">Otros estudios</label>  
-                <input id="otrosEstudios" name="otrosEstudios" type="text" placeholder="Otros estudios" class="form-control input-sm" required="">  
+                <input id="otrosEstudios" name="otrosEstudios" type="text" placeholder="Otros estudios" class="form-control input-sm" >  
         </div>
     </div><!-- fin row2 -->
 </div>
@@ -65,9 +65,9 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
     <div class="col-sm-6">
         <div class="form-group">
             <label class="control-label" for="institucion">Instituci&oacute;n</label>  
-            <!--<input id="institucion" name="institucion" type="text" placeholder="Instituci&oacute;n" class="form-control input-sm" required="">-->
-             <select id="institucion" name="institucion" class="form-control input-sm" required="">
-                <?php
+            <input id="institucion" name="institucion" type="text" placeholder="Instituci&oacute;n" class="form-control input-sm" >
+             <!--<select id="institucion" name="institucion" class="form-control input-sm" required="">
+                <?php /*
                     conectarBD();
                     $consulta="SELECT * FROM instituciones";# consulta sql
                     $sql=mysql_query($consulta);
@@ -75,15 +75,15 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
                     {
                     echo'<OPTION VALUE="'.$row['id'].'">'.$row['detalle'].'</OPTION>';
                     }
-                    desconectarBD();
+                    desconectarBD(); */
                 ?>
-            </select>
+            </select> -->
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
             <label class="control-label" for="otrosEgresos">A&ntilde;o egreso</label>  
-            <input id="otrosEgresos" name="otrosEgresos" type="number" placeholder="A&ntilde;o egreso" class="form-control input-sm" required="" min="1900" max="<?php echo date(Y);?>"> 
+            <input id="otrosEgresos" name="otrosEgresos" type="number" placeholder="A&ntilde;o egreso" class="form-control input-sm" min="1900" max="<?php echo date(Y);?>"> 
         </div>
     </div>
 </div><!-- fin row3 -->
