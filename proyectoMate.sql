@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-06-2016 a las 19:21:29
+-- Tiempo de generación: 07-06-2016 a las 23:27:05
 -- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.17
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `carreras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `resolucion` varchar(50) DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `resolucion` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `institutos` (
 --
 
 INSERT INTO `institutos` (`id`, `nombre`, `numero`) VALUES
-(1, 'I.S.F.T. N° 177', 177);
+(1, 'I.S.F.T. N 177', 177);
 
 -- --------------------------------------------------------
 
@@ -2305,17 +2305,23 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `longitud` int(11) DEFAULT NULL,
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `idInstituto` int(2) DEFAULT NULL,
+  `idCarreras` int(2) DEFAULT NULL,
+  `idTurno` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `anio` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
-(1, 1, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Root', 'Administrador', 123456789, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456789, NULL, NULL, 'root@root', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino'),
-(3, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino');
+INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`, `idInstituto`, `idCarreras`, `idTurno`, `anio`) VALUES
+(1, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Root', 'Administrador', 123456789, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123456789, NULL, NULL, 'root@root', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no', 'asdas', '2', 'asdasd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Vega', 'Luis', 33667241, 1, '1988-03-23', 'C.A.B.A.', 0, 0, 'a', 1, 1, '1', '1', '1', 1, 15486532, 11111111, 'pedro', 'asd@asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Masculino', NULL, NULL, NULL, NULL),
+(3, 6, 1, 'dc76e9f0c0006e8f919e0c515c66dbba3982f785', 'Sanchez', 'Juan Enrique', 35800453, 1, '0000-00-00', 'MORON', 0, 0, 'Pedro Lacoste o', 385, 0, 'B', 'Merl', 'Merlo', 1722, 1159142845, 2147483647, 'Juan', 'jenriquesanchez@hotmail.com.ar', 'HUSOC', 2008, '10', 'Merlo', 'Programador BÃ¡sico', '1', '2008', 'si', 'Analista QA', '2', 'Galeno ', NULL, NULL, NULL, 'Masculino', NULL, NULL, NULL, NULL),
+(4, 6, 1, '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Zenon', 'Karina', 27305444, 1, '1978-07-26', '539', 0, 0, 'Guemes ', 2570, 0, '3', 'MERLO/ARGENTINO/LOMA', '539', 1722, 123456778, 123456789, 'PapÃ¡', 'karizenon07@gmail.com', 'Bachiller en ComputaciÃ³n', 1996, '10', 'Merlo', 'Profesorado en MatemÃ¡tica', '1', '2008', 'si', 'Doncente', '2', 'IOMA', NULL, NULL, NULL, NULL, 1, 3, 'noche', '2016'),
+(5, 6, 1, '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'gerea', 'maria florencia', 37787983, 1, '1994-02-28', '539', 0, 0, 'ascasubi', 1080, 0, '-', 'SAN ANTONIO DE PADUA', '539', 1718, 1167046805, 2147483647, 'casa', 'flormariaa22@gmail.com', NULL, NULL, 'instituto superior de formacion tecnica n 177', NULL, NULL, NULL, NULL, NULL, 'alumno', NULL, NULL, NULL, NULL, NULL, 'Femenino', 1, 1, 'noche', '2017');
 
 -- --------------------------------------------------------
 
@@ -2328,7 +2334,7 @@ CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
   `id_usuario` int(10) NOT NULL,
   `id_perfil` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100 ;
 
 --
 -- Volcado de datos para la tabla `usuariosPerfiles`
@@ -2336,7 +2342,104 @@ CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
 
 INSERT INTO `usuariosPerfiles` (`id`, `id_usuario`, `id_perfil`) VALUES
 (1, 1, 1),
-(2, 3, 6);
+(2, 3, 6),
+(3, 4, 6),
+(4, 5, 6),
+(5, 6, 6),
+(6, 7, 6),
+(7, 8, 6),
+(8, 9, 6),
+(9, 10, 6),
+(10, 11, 6),
+(11, 12, 6),
+(12, 13, 6),
+(13, 14, 6),
+(14, 15, 6),
+(15, 16, 6),
+(16, 17, 6),
+(17, 18, 6),
+(18, 19, 6),
+(19, 20, 6),
+(20, 21, 6),
+(21, 22, 6),
+(22, 23, 6),
+(23, 24, 6),
+(24, 25, 6),
+(25, 26, 6),
+(26, 27, 6),
+(27, 28, 6),
+(28, 29, 6),
+(29, 30, 6),
+(30, 31, 6),
+(31, 32, 6),
+(32, 33, 6),
+(33, 34, 6),
+(34, 35, 6),
+(35, 36, 6),
+(36, 37, 6),
+(37, 38, 6),
+(38, 39, 6),
+(39, 40, 6),
+(40, 41, 6),
+(41, 42, 6),
+(42, 43, 6),
+(43, 44, 6),
+(44, 45, 6),
+(45, 46, 6),
+(46, 47, 6),
+(47, 48, 6),
+(48, 49, 6),
+(49, 50, 6),
+(50, 51, 6),
+(51, 52, 6),
+(52, 53, 6),
+(53, 54, 6),
+(54, 55, 6),
+(55, 56, 6),
+(56, 57, 6),
+(57, 58, 6),
+(58, 59, 6),
+(59, 60, 6),
+(60, 61, 6),
+(61, 62, 6),
+(62, 63, 6),
+(63, 64, 6),
+(64, 65, 6),
+(65, 66, 6),
+(66, 67, 6),
+(67, 68, 6),
+(68, 69, 6),
+(69, 70, 6),
+(70, 71, 6),
+(71, 72, 6),
+(72, 73, 6),
+(73, 74, 6),
+(74, 75, 6),
+(75, 76, 6),
+(76, 77, 6),
+(77, 78, 6),
+(78, 79, 6),
+(79, 80, 6),
+(80, 81, 6),
+(81, 82, 6),
+(82, 83, 6),
+(83, 84, 6),
+(84, 85, 6),
+(85, 86, 6),
+(86, 87, 6),
+(87, 88, 6),
+(88, 89, 6),
+(89, 90, 6),
+(90, 91, 6),
+(91, 92, 6),
+(92, 93, 6),
+(93, 94, 6),
+(94, 95, 6),
+(95, 96, 6),
+(96, 97, 6),
+(97, 98, 6),
+(98, 99, 6),
+(99, 100, 6);
 
 --
 -- Restricciones para tablas volcadas
