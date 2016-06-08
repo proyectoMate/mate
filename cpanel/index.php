@@ -1,6 +1,11 @@
 <?php
     session_start();
     header("Content-Type: text/html; charset=ISO-8859-1");
+    if(!$_SESSION){
+        echo'<script>window.location="../index.php";</script>';
+        die();
+    }
+
     require("functions/generales.php");
 
 /*    SELECT u.id, u.rol_id, up.id_perfil, pm.idMenu, m.nombreMenu FROM usuarios as u

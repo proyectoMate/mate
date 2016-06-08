@@ -2,7 +2,7 @@
 if ($_POST['boton']=='registrar') 
 {
     sql_update_post($_POST, 'usuarios', 'dni', $_SESSION['usuario']);
-    msgbox("Aqui debe direccionar a otra pagina");
+    f_ir_a('inscripcion.php?etapa=4');
 }
 ?>
 <h2>Paso 3 de 3 </h2>
@@ -46,7 +46,7 @@ if ($_POST['boton']=='registrar')
         </div>
     </div>
 </div>
-<input type="hidden" name="rol_id" value="1">
+<input type="hidden" name="rol_id" value="6">
 <div class="row">
     <div class="container-fluid">
         <input type="submit" class="bottom btn btn-block btn-lg btn-success" name="boton" value="registrar">

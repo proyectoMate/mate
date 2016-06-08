@@ -1,7 +1,7 @@
 <?php
     session_start();
     include('./functions/funciones.php');
-    
+    //require_once("config/db_conexion.php");
     head('Logueo');
 ?>
     <?php 
@@ -15,6 +15,11 @@
         {
             require_once './layouts/insc3.php';
         }
+        if($_GET['etapa']==4)
+        {
+            require_once './inscripcionCarrera.php';
+        }
+        
     }
     else 
     {

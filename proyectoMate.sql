@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 07, 2016 at 12:31 AM
--- Server version: 5.5.49-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.17
+-- Servidor: localhost
+-- Tiempo de generación: 07-06-2016 a las 19:21:29
+-- Versión del servidor: 5.5.49-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `proyectoMate`
+-- Base de datos: `proyectoMate`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `escuelas`
+-- Estructura de tabla para la tabla `carreras`
+--
+
+CREATE TABLE IF NOT EXISTS `carreras` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `resolucion` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `carreras`
+--
+
+INSERT INTO `carreras` (`id`, `nombre`, `resolucion`) VALUES
+(1, 'Tecnicatura Superior en Análisis de Sistemas', '5817/03'),
+(2, 'Tecnicatura Superior en Tecnología en Salud con especialidad en Laboratorio de Análisis Clínicos', '5140/03'),
+(3, 'Tecnicatura Superior en Administración Contable', '273/03'),
+(4, 'Tecnicatura Superior en Gestión Ambiental y Salud', '442/08');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `escuelas`
 --
 
 CREATE TABLE IF NOT EXISTS `escuelas` (
@@ -33,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `escuelas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `escuelas`
+-- Volcado de datos para la tabla `escuelas`
 --
 
 INSERT INTO `escuelas` (`id`, `detalle`) VALUES
@@ -52,7 +76,7 @@ INSERT INTO `escuelas` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estadoCiviles`
+-- Estructura de tabla para la tabla `estadoCiviles`
 --
 
 CREATE TABLE IF NOT EXISTS `estadoCiviles` (
@@ -62,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `estadoCiviles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `estadoCiviles`
+-- Volcado de datos para la tabla `estadoCiviles`
 --
 
 INSERT INTO `estadoCiviles` (`id`, `detalle`) VALUES
@@ -74,17 +98,17 @@ INSERT INTO `estadoCiviles` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estados`
+-- Estructura de tabla para la tabla `estados`
 --
 
 CREATE TABLE IF NOT EXISTS `estados` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `estados`
+-- Volcado de datos para la tabla `estados`
 --
 
 INSERT INTO `estados` (`id`, `detalle`) VALUES
@@ -95,7 +119,7 @@ INSERT INTO `estados` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `horariosHabituales`
+-- Estructura de tabla para la tabla `horariosHabituales`
 --
 
 CREATE TABLE IF NOT EXISTS `horariosHabituales` (
@@ -105,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `horariosHabituales` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `horariosHabituales`
+-- Volcado de datos para la tabla `horariosHabituales`
 --
 
 INSERT INTO `horariosHabituales` (`id`, `detalle`) VALUES
@@ -115,7 +139,32 @@ INSERT INTO `horariosHabituales` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instituciones`
+-- Estructura de tabla para la tabla `instCarr`
+--
+
+CREATE TABLE IF NOT EXISTS `instCarr` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idInstituto` int(11) NOT NULL,
+  `idCarrera` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idInstituto` (`idInstituto`),
+  KEY `idCarrera` (`idCarrera`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `instCarr`
+--
+
+INSERT INTO `instCarr` (`id`, `idInstituto`, `idCarrera`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `instituciones`
 --
 
 CREATE TABLE IF NOT EXISTS `instituciones` (
@@ -125,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `instituciones` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `instituciones`
+-- Volcado de datos para la tabla `instituciones`
 --
 
 INSERT INTO `instituciones` (`id`, `detalle`) VALUES
@@ -134,7 +183,28 @@ INSERT INTO `instituciones` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localidadPartidoCp`
+-- Estructura de tabla para la tabla `institutos`
+--
+
+CREATE TABLE IF NOT EXISTS `institutos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `numero` int(3) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `institutos`
+--
+
+INSERT INTO `institutos` (`id`, `nombre`, `numero`) VALUES
+(1, 'I.S.F.T. N° 177', 177);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `localidadPartidoCp`
 --
 
 CREATE TABLE IF NOT EXISTS `localidadPartidoCp` (
@@ -147,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `localidadPartidoCp` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1882 ;
 
 --
--- Dumping data for table `localidadPartidoCp`
+-- Volcado de datos para la tabla `localidadPartidoCp`
 --
 
 INSERT INTO `localidadPartidoCp` (`id`, `partido`, `cod_partido`, `localidad`, `cp`) VALUES
@@ -2037,7 +2107,7 @@ INSERT INTO `localidadPartidoCp` (`id`, `partido`, `cod_partido`, `localidad`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Estructura de tabla para la tabla `menus`
 --
 
 CREATE TABLE IF NOT EXISTS `menus` (
@@ -2049,7 +2119,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `menus`
+-- Volcado de datos para la tabla `menus`
 --
 
 INSERT INTO `menus` (`id`, `nombreMenu`, `linkMenu`, `descMenu`) VALUES
@@ -2059,7 +2129,7 @@ INSERT INTO `menus` (`id`, `nombreMenu`, `linkMenu`, `descMenu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perfiles`
+-- Estructura de tabla para la tabla `perfiles`
 --
 
 CREATE TABLE IF NOT EXISTS `perfiles` (
@@ -2071,7 +2141,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `perfiles`
+-- Volcado de datos para la tabla `perfiles`
 --
 
 INSERT INTO `perfiles` (`id`, `nombre`, `descripcion`, `estado`) VALUES
@@ -2087,7 +2157,7 @@ INSERT INTO `perfiles` (`id`, `nombre`, `descripcion`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perfilesMenu`
+-- Estructura de tabla para la tabla `perfilesMenu`
 --
 
 CREATE TABLE IF NOT EXISTS `perfilesMenu` (
@@ -2096,7 +2166,7 @@ CREATE TABLE IF NOT EXISTS `perfilesMenu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `perfilesMenu`
+-- Volcado de datos para la tabla `perfilesMenu`
 --
 
 INSERT INTO `perfilesMenu` (`idPerfil`, `idMenu`) VALUES
@@ -2107,17 +2177,17 @@ INSERT INTO `perfilesMenu` (`idPerfil`, `idMenu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Estructura de tabla para la tabla `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `detalle` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `roles`
+-- Volcado de datos para la tabla `roles`
 --
 
 INSERT INTO `roles` (`id`, `detalle`) VALUES
@@ -2135,7 +2205,7 @@ INSERT INTO `roles` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subMenus`
+-- Estructura de tabla para la tabla `subMenus`
 --
 
 CREATE TABLE IF NOT EXISTS `subMenus` (
@@ -2149,7 +2219,7 @@ CREATE TABLE IF NOT EXISTS `subMenus` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `titulos`
+-- Estructura de tabla para la tabla `titulos`
 --
 
 CREATE TABLE IF NOT EXISTS `titulos` (
@@ -2159,7 +2229,7 @@ CREATE TABLE IF NOT EXISTS `titulos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `titulos`
+-- Volcado de datos para la tabla `titulos`
 --
 
 INSERT INTO `titulos` (`id`, `detalle`) VALUES
@@ -2171,7 +2241,29 @@ INSERT INTO `titulos` (`id`, `detalle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `turnos`
+--
+
+CREATE TABLE IF NOT EXISTS `turnos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `turno` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `turno` (`turno`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id`, `turno`) VALUES
+(1, 'Mañana'),
+(3, 'Noche'),
+(2, 'Tarde');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -2214,10 +2306,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccionNormalizada` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `sexo` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombre`, `dni`, `estadoCivil`, `fNacimiento`, `lugarNacimiento`, `cantHijos`, `FamACargo`, `domicilio`, `numDomcilio`, `pisoDomicilio`, `dptoDomicilio`, `localidad`, `partido`, `codigoPostal`, `tel`, `telAlternativo`, `perteneceA`, `email`, `titulo`, `anioEgreso`, `escuela`, `distrito`, `otrosEstudios`, `institucion`, `otrosEgresos`, `trabaja`, `actividad`, `horarioHabitual`, `obraSocial`, `latitud`, `longitud`, `direccionNormalizada`, `sexo`) VALUES
@@ -2228,7 +2320,7 @@ INSERT INTO `usuarios` (`id`, `rol_id`, `estado`, `password`, `apellido`, `nombr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuariosPerfiles`
+-- Estructura de tabla para la tabla `usuariosPerfiles`
 --
 
 CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
@@ -2239,12 +2331,23 @@ CREATE TABLE IF NOT EXISTS `usuariosPerfiles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `usuariosPerfiles`
+-- Volcado de datos para la tabla `usuariosPerfiles`
 --
 
 INSERT INTO `usuariosPerfiles` (`id`, `id_usuario`, `id_perfil`) VALUES
 (1, 1, 1),
 (2, 3, 6);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `instCarr`
+--
+ALTER TABLE `instCarr`
+  ADD CONSTRAINT `instCarr_ibfk_1` FOREIGN KEY (`idInstituto`) REFERENCES `institutos` (`id`),
+  ADD CONSTRAINT `instCarr_ibfk_2` FOREIGN KEY (`idCarrera`) REFERENCES `carreras` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
