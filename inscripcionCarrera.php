@@ -1,14 +1,22 @@
+<<<<<<< HEAD
 <!--
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 	<title>Inscripción a carrera</title>
 	<meta charset="UTF-8"> 
+=======
+<html>
+<head>
+	<title>Inscripción a carrera</title>
+	<meta charset="UTF-8">
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
+<<<<<<< HEAD
 	-->
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
@@ -35,6 +43,16 @@
 				    }
 				    desconectarBD();
 				    f_ir_a('./cpanel/index.php');
+=======
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+			<?php
+			    require_once("config/db_conexion.php");
+
+			    if ($_POST) 
+			    {
+			    	print_r($_POST);
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
 			    }
 			    else
 			    {
@@ -62,7 +80,10 @@
 							                echo "<option value='".$fila["id"]."'>".utf8_decode($fila["nombre"])."</option>";
 							            }
 							        } 
+<<<<<<< HEAD
 							        desconectarBD();
+=======
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
 								?>
 								</select>
 							</div>
@@ -85,8 +106,12 @@
 								            {
 								                echo "<option value='".$fila["id"]."'>".utf8_decode($fila["nombre"])."</option>";
 								            }
+<<<<<<< HEAD
 								        }
 								        desconectarBD(); 
+=======
+								        } 
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
 									?>
 								</select>
 							</div>
@@ -109,7 +134,11 @@
 								</select>
 							</div>
 
+<<<<<<< HEAD
 							<button name="ok" class="btn btn-primary" role="button" value="registrofin">Inscribirme</button>
+=======
+							<button name="ok" class="btn btn-primary" role="button">Inscribirme</button>
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
 						</form>
 					</fieldset>
 					<?php
@@ -117,7 +146,13 @@
 			?>		
 			</div>
 		</div>
+<<<<<<< HEAD
 	<!--</div>
 </body>
 </html>
 -->
+=======
+	</div>
+</body>
+</html>
+>>>>>>> c5357155961692f4a46cdd862c39276dde562282
