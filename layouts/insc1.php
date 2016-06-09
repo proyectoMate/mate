@@ -207,7 +207,7 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
     <div class="col-sm-4"><!-- Col N°3 -->
         <div class="form-group">
             <label class="control-label" for="telAlternativo">Tel&eacute;fono alternativo</label>  
-            <input id="telAlternativo" name="telAlternativo" type="number" placeholder="Tel&eacute;fono alternativo" class="form-control input-sm" required="" min="11111111" max="99999999999">  
+            <input id="telAlternativo" name="telAlternativo" type="number" placeholder="Tel&eacute;fono alternativo" class="form-control input-sm" min="11111111" max="99999999999">  
         </div>
     </div>
 </div><!-- Fin N°5 -->
@@ -216,7 +216,7 @@ $datosForm=  sql_devuelve_detalle('usuarios', 'dni', $_SESSION['usuario']);
     <div class="col-sm-5"><!-- Col N°1 -->
         <div class="form-group">
             <label class="control-label" for="perteneceA">Pertenece a </label>  
-            <input id="perteneceA" name="perteneceA" type="text" placeholder="Pertenece a " class="form-control input-sm" required="">  
+            <input id="perteneceA" name="perteneceA" type="text" placeholder="Pertenece a " class="form-control input-sm" >  
         </div>
     </div>
     <div class="col-sm-5"><!-- Col N°2 -->

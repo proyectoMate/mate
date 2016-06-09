@@ -39,7 +39,7 @@ function top_menu($id_user){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ISFT 177</a>
+                <a class="navbar-brand" href="index.php">ISFT 177</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -272,7 +272,7 @@ function left_menu($id_user=0){
                                        up.id_perfil as id_perfil, 
                                        pm.idMenu as idMenu, 
                                        m.nombreMenu as nombreMenu,
-                                       m.linkMenu as link_menu 
+                                       m.linkMenu as linkMenu 
                                 FROM usuarios as u
                                 INNER JOIN usuariosPerfiles as up ON u.id =  up.id_usuario
                                 INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil

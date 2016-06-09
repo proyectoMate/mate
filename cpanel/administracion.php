@@ -38,7 +38,7 @@ head();
             <div class="row" id="tabla_registros">
                 <div class="col-lg-12">
                     <div class='panel panel-default'>
-                        <!-- <div class='panel-heading'><a href="" class="btn btn-success" role="button">Nuevo</a> -->
+                        <div class='panel-heading'><a href="" class="btn btn-success" role="button">Nuevo</a>
                         </div>
                         <div class='panel-body'> 
                             <div class='table-/responsive'>
@@ -54,7 +54,7 @@ head();
                                     </thead>
                                     <tbody id="tabla_alumnos">
                                     <?php
-                                        $sqlx="SELECT * FROM usuarios WHERE id = ".$_SESSION["id"]." ORDER BY apellido, nombre ASC";
+                                        $sqlx="SELECT * FROM usuarios ORDER BY apellido, nombre ASC";
                                         conectarBD();
                                         $resx=mysql_query($sqlx);
 
@@ -96,9 +96,6 @@ head();
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
-
     <!-- Core Scripts - Include with every page -->
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -113,14 +110,6 @@ head();
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="../js/demo/dashboard-demo.js"></script>
-
-    <script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-    </script>
 
 </body>
 

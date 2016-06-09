@@ -2,7 +2,7 @@
 /* conexion con base de datos */
         define('HOST_DB', 'localhost');
         define('USER_DB', 'root');
-        define('PASS_DB', '33667241a');
+        define('PASS_DB', 'root');
         define('NAME_DB', 'proyectoMate');
 
 function conectarBD()

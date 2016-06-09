@@ -13,11 +13,23 @@ INNER JOIN usuariosPerfiles as up ON u.id =  up.id_usuario
 INNER JOIN perfilesMenu as pm on up.id_perfil = pm.idPerfil
 INNER JOIN menus as m on pm.idMenu = m.id*/
 
+$sql = "SELECT * FROM usuarios WHERE  id = ".$_SESSION['id']."";
+conectarBD();
+
+$reg = mysql_query($sql);
+while ($registro = mysql_fetch_array($reg))
+{
+
+    $nombre = $registro['nombre'];
+    $apellido = $registro['apellido'];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
 <?php
-head();
+$tit = "Panel de Control :: ".$apellido." ".$nombre."";
+head($tit);
 
 ?>
 <body>
@@ -29,32 +41,42 @@ head();
             ?>
 
         <div id="page-wrapper">
-            <div class="row">
+           <div class="row" id="tabla_titu_registros">
                 <div class="col-lg-12">
-                    <h3 class="page-header">Panel de Control / Bienvenido </h3>
+                    <h3 class="page-header">Bienvenido <?php echo $apellido." ".$nombre; ?></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-<?php
+            <div class="row" id="tabla_registros">
+                <div class="col-lg-12">
+                    <div class='panel panel-default'>
+                        <!-- <div class='panel-heading'><a href="" class="btn btn-success" role="button">Nuevo</a> -->
+                        </div>
+                        <div class='panel-body'> 
+                            <div class='table-/responsive'>
+                            <?php
+                            //echo $_SESSION['id'];
+                            ?>
+                            <!--     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                
+ 
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla_alumnos">
+                                    <?php
 
-?>                    
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+                                    ?>
+                                    </th></tr>
+                                    </tbody>
+                                </table> -->
+                            </div><!-- Fin table-responsive -->    
+                        </div><!-- Fin panel-body -->    
+                    </div><!-- Fin panel panel-default -->
+                </div><!-- Fin col-lg-12 -->
+            </div> <!-- Fin row -->  
         </div>
         <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
 
     <!-- Core Scripts - Include with every page -->
     <script src="../js/jquery-1.10.2.js"></script>
